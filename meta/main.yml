@@ -1,0 +1,19 @@
+galaxy_info:
+  author: Jindrich Skupa
+  description: Role to setup docker on server
+  company: No company
+
+  issue_tracker_url: https://github.com/jindrichskupa/ansible-docker/issues
+
+  license: MIT
+
+  min_ansible_version: 2.4
+  platforms:
+    - name: Debian
+      versions:
+        - buster
+  galaxy_tags:
+    - debian
+    - docker
+
+dependencies: []

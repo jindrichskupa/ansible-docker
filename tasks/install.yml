@@ -1,0 +1,67 @@
+---
+# tasks file for docker
+- name: Remove old packages
+  apt:
+    pkg:
+      - docker-engine
+      - docker.io
+      - containerd
+      - runc
+    state: absent
+  tags:
+  - docker
+
+- name: Install docker dependencies
+  apt:
+    pkg:
+      - ca-certificates
+      - curl
+      - gnupg2
+      - software-properties-common
+      - apt-transport-https
+      - python3-pip
+      - python3-setuptools
+      - python3-docker
+    state: present
+    update_cache: yes
+  tags:
+  - docker
+
+- name: Install python docker module
+  pip:
+    name: docker-py
+    state: present
+  become: true
+  tags:
+  - docker
+
+- name: Import the docker GPG key into apt
+  apt_key:
+    url: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
+    state: present
+  tags:
+  - docker
+
+- name: Add docker deb repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable"
+    state: present
+  tags:
+  - docker
+
+- name: Install Docker
+  apt:
+    pkg:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    state: present
+    update_cache: yes
+  tags:
+  - docker
+
+- name: Install docker-compose
+  get_url:
+    url: "https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-Linux-{{ ansible_architecture }}"
+    dest: /usr/local/bin/docker-compose
+    mode: '0755'
