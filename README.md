@@ -1,7 +1,7 @@
 Ansible Docker install role
 =========
 
-Simple role to install docker follwing official guide.
+Simple role to install docker and docker-compose following official guide.
 
 Requirements
 ------------
@@ -21,6 +21,8 @@ Example Playbook
     ansible_python_interpreter: /usr/bin/python3
   roles:
     - role: docker
+      vars:
+        docker_compose_version: 1.29.2
 ```
 
 License
