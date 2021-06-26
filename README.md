@@ -20,7 +20,7 @@ Example Playbook
   vars:
     ansible_python_interpreter: /usr/bin/python3
   roles:
-    - role: docker
+    - role: jindrichskupa.ansible_docker
       vars:
         docker_compose_version: 1.29.2
 ```
