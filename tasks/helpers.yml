@@ -5,6 +5,6 @@
     pkg:
       - amazon-ecr-credential-helper
     state: present
-  when: ecr_docker_helper == true
+  when: install_ecr_docker_helper
   tags:
     - docker
