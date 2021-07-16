@@ -1,3 +1,3 @@
 ---
 docker_compose_version: 1.29.2
-intstall_ecr_docker_helper: false
+install_ecr_docker_helper: false
