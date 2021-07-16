@@ -1,0 +1,10 @@
+---
+# tasks file for docker
+- name: Install amazon ecr credentials helper
+  apt:
+    pkg:
+      - amazon-ecr-credential-helper
+    state: present
+  when: ecr_docker_helper == true
+  tags:
+    - docker

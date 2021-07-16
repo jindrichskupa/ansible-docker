@@ -1,2 +1,4 @@
 ---
 docker_compose_version: 1.29.2
+ecr_docker_helper: false
+
